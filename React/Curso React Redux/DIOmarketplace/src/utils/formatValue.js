@@ -1,2 +1,2 @@
-const formatValue = (value) => `R$${value}`;
-export default formatValue;
+const formataBRL = (value) => `R$${value}`;
+export default formataBRL;

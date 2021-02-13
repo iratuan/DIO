@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import formatValue from '../../utils/formatValue';
+import formataBRL from '../../utils/formatValue';
+
 import {
     Container,
     PriceContainer,
@@ -62,7 +63,7 @@ export default function Catalog() {
                             <ProductTitle>{item.title}</ProductTitle>
                             <PriceContainer>
                                 <ProductPrice>
-                                    {formatValue(item.price)}
+                                    {formataBRL(item.price)}
                                 </ProductPrice>
                                 <ProductButton onPress={() => {}}>
                                     <ProductButtonText>
