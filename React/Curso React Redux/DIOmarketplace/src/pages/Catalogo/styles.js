@@ -7,11 +7,11 @@ export const Container = styled.View`
     align-items: center;
 `;
 
-export const ProductContainer = styled.View`
+export const ProductContainer = styled.SafeAreaView`
     flex: 1;
     flex-direction: row;
     margin-top: 40px;
-    border-radius: 5pc;
+    border-radius: 5px;
 `;
 
 export const ProductList = styled(FlatList).attrs({
@@ -39,7 +39,38 @@ export const ProductTitle = styled.Text`
     color: #b9c0d2;
     font-size: 22px;
     margin-top: 10px;
-    font-height: 40px;
     letter-spacing: 3.5px;
     text-align: center;
+`;
+
+export const PriceContainer = styled.View`
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 24px 32px 4px;
+`;
+
+export const ProductPrice = styled.Text`
+    color: #f3f9ff;
+    font-size: 22px;
+    font-weight: bold;
+`;
+
+export const ProductButton = styled.TouchableOpacity`
+    background: #4f5564;
+    padding: 4px 8px;
+    border-radius: 100px;
+    flex-direction: row;
+    align-content: center;
+`;
+
+export const ProductButtonText = styled.Text`
+    color: #b9c0d2;
+    font-weight: 800;
+    padding: 0 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    align-self: center;
+    font-weight: 800;
 `;

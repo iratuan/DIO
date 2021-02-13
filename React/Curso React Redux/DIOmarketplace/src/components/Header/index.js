@@ -1,6 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native';
-import {Container} from './styles';
+import {Container, Image} from './styles';
 import Logo from '../../assets/logo.png';
 
 const Header = () => (
