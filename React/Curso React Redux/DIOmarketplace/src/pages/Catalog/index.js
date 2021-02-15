@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 import {View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import formataBRL from '../../utils/formatValue';
 import FloatingCart from '../../components/FloatingCart';
+import api from '../../services/api';
+import * as CartActions from '../../store/modules/cart/actions';
 
 import {
     Container,
@@ -18,36 +21,20 @@ import {
 } from './styles';
 
 export default function Catalog() {
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            title: 'Assinatura mensal',
-            price: 15.5,
-            image_url:
-                'https://cdn.statically.io/img/nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png?quality=100&f=auto',
-        },
-        {
-            id: 2,
-            title: 'Assinatura bimestral',
-            price: 30.5,
-            image_url:
-                'https://cdn.statically.io/img/nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png?quality=100&f=auto',
-        },
-        {
-            id: 3,
-            title: 'Assinatura trimestral',
-            price: 40.5,
-            image_url:
-                'https://cdn.statically.io/img/nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png?quality=100&f=auto',
-        },
-        {
-            id: 4,
-            title: 'Assinatura semestral',
-            price: 50.5,
-            image_url:
-                'https://cdn.statically.io/img/nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png?quality=100&f=auto',
-        },
-    ]);
+    const dispatch = useDispatch();
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        async function loadProducts() {
+            const {data} = await api.get('/products');
+            setProducts(data);
+        }
+        loadProducts();
+    }, []);
+
+    function handleAddToCart(id) {
+        dispatch(CartActions.addToCartRequest(id));
+    }
     return (
         <Container>
             <ProductContainer>
@@ -66,7 +53,8 @@ export default function Catalog() {
                                 <ProductPrice>
                                     {formataBRL(item.price)}
                                 </ProductPrice>
-                                <ProductButton onPress={() => {}}>
+                                <ProductButton
+                                    onPress={() => handleAddToCart(item.id)}>
                                     <ProductButtonText>
                                         Adicionar
                                     </ProductButtonText>
