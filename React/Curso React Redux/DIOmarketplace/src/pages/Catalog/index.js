@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View} from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import formataBRL from '../../utils/formatValue';
+import FloatingCart from '../../components/FloatingCart';
 
 import {
     Container,
@@ -80,6 +81,7 @@ export default function Catalog() {
                     )}
                 />
             </ProductContainer>
+            <FloatingCart />
         </Container>
     );
 }
